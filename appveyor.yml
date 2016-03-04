@@ -35,9 +35,13 @@ build_script:
       
       bash -lc "gcc -v; echo; g++ -v; echo; ccache -V"
       
-      set CCACHE="C:\msys64\mingw64\bin\ccache"
+      set "CCACHE=C:\msys64\mingw64\bin\ccache"
       
       set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%\.ccache
+      
+      set "CC=ccache gcc"
+      
+      set "CXX=ccache g++"
       
       ccache -s
       
