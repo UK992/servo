@@ -37,11 +37,7 @@ build_script:
       
       set CCACHE="C:\msys64\mingw64\bin\ccache
       
-      set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%/.ccache
-      
-      set CC="ccache gcc"
-      
-      set CXX="g++"
+      set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%\.ccache
       
       ccache -s
       
