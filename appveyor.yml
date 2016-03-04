@@ -26,6 +26,7 @@ install:
 build_script:
   - cmd: >-
       set MSYSTEM=MINGW64
+      
       PATH C:\msys64\mingw64\bin;C:\msys64\usr\bin\;%PATH%
       
       echo %CC%
@@ -41,10 +42,13 @@ build_script:
       set CC="ccache gcc"
       
       set CXX="g++"
+      
       ccache -s
       
       set
+      
       bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./mach build -d -v"
       
       ccache -s
+ 
 test: off
