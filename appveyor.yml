@@ -35,7 +35,7 @@ build_script:
       
       rem bash -lc "gcc -v; echo; g++ -v; echo; ccache -V"
       
-      set CCACHE_PATH="C:\msys64\mingw64\bin\"
+      set CCACHE_PATH=C:\msys64\mingw64\bin\
       
       set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%\.ccache
       
