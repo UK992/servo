@@ -22,9 +22,9 @@ install:
   - bash -lc "easy_install-2.7 pip virtualenv"
   - bash -lc "mv /mingw64/bin/python2.exe /mingw64/bin/python2-mingw64.exe"
   - bash -lc "mv /mingw64/bin/python2.7.exe /mingw64/bin/python2.7-mingw64.exe"
-  - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\gcc
-  - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\g++
-#  - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\cc
+  - ln -s -f -v /mingw64/bin/ccache /mingw64/bin/gcc
+  - ln -s -f -v /mingw64/bin/ccache /mingw64/bin/g++
+  - ln -s -f -v /mingw64/bin/ccache /mingw64/bin/cc
 
 build_script:
   - cmd: >-
@@ -46,9 +46,9 @@ build_script:
       
       rem set "CXX=C:/msys64/mingw64/bin/ccache C:/msys64/mingw64/bin/g++ -mwindows"
       
-      rem set "CC=ccache C:\msys64\mingw64\bin\gcc"
+      rem set "CC=ccache gcc"
       
-      rem set "CXX=ccache /mingw64/bin/g++"
+      rem set "CXX=ccache g++"
       
       ccache -s
       
