@@ -22,9 +22,9 @@ install:
   - bash -lc "easy_install-2.7 pip virtualenv"
   - bash -lc "mv /mingw64/bin/python2.exe /mingw64/bin/python2-mingw64.exe"
   - bash -lc "mv /mingw64/bin/python2.7.exe /mingw64/bin/python2.7-mingw64.exe"
-#  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\usr\\bin\\gcc
-#  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\usr\\bin\\g++
-#  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\usr\\bin\\cc
+  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\mingw64\\bin\\gcc
+  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\mingw64\\bin\\g++
+  - ln -s -f -v C:\\msys64\\mingw64\\bin\\ccache C:\\msys64\\mingw64\\bin\\cc
 
 build_script:
   - cmd: >-
@@ -42,9 +42,9 @@ build_script:
       
       set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%\.ccache
       
-      set "CC=C:/msys64/mingw64/bin/ccache C:/msys64/mingw64/bin/gcc -mwindows"
+      rem set "CC=C:/msys64/mingw64/bin/ccache C:/msys64/mingw64/bin/gcc -mwindows"
       
-      set "CXX=C:/msys64/mingw64/bin/ccache C:/msys64/mingw64/bin/g++ -mwindows"
+      rem set "CXX=C:/msys64/mingw64/bin/ccache C:/msys64/mingw64/bin/g++ -mwindows"
       
       rem set "CC=ccache C:\msys64\mingw64\bin\gcc"
       
