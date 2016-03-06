@@ -24,7 +24,7 @@ install:
   - bash -lc "mv /mingw64/bin/python2.7.exe /mingw64/bin/python2.7-mingw64.exe"
   - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\gcc
   - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\g++
-  - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\cc
+#  - ln -s -f -v C:\msys64\mingw64\bin\ccache C:\msys64\mingw64\bin\cc
 
 build_script:
   - cmd: >-
