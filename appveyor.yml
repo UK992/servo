@@ -40,7 +40,29 @@ install:
 build_script:
   - cmd: >-
       set MSYSTEM=MINGW64
-
+      
+      PATH C:\msys64\mingw64\bin\;C:\msys64\usr\bin\;%PATH%
+      
+      rem echo %CC%
+      
+      rem echo %CXX%
+      
+      rem bash -lc "gcc -v; echo; g++ -v; echo; ccache -V"
+      
+      set CCACHE_PATH=C:\msys64\mingw64\bin\
+      
+      set CCACHE_DIR=%APPVEYOR_BUILD_FOLDER%\.ccache
+      
+      set "CC=ccache C:\msys64\mingw64\bin\gcc"
+      
+      set "CXX=ccache C:\msys64\mingw64\bin\g++"
+      
+      ccache -s
+      
+      set
+      
       bash -lc "cd $APPVEYOR_BUILD_FOLDER; ./mach build -d -v && ./mach test-unit"
+      
+      ccache -s
 
 test: off
