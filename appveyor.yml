@@ -4,8 +4,10 @@ environment:
   PATH: 'C:\msys64\mingw64\bin;C:\msys64\usr\bin\;%PATH%'
   MSYSTEM: 'MSYS'
   MSYS: 'winsymlinks=lnk'
-  CCACHE_PATH: 'C:\msys64\mingw64\bin\'
+  CCACHE_PATH: 'C:\msys64\mingw64\bin'
   CCACHE_DIR: '%APPVEYOR_BUILD_FOLDER%\.ccache'
+  CC: 'ccache gcc'
+  CXX: 'ccache g++'
 
 branches:
   only:
@@ -33,13 +35,13 @@ install:
   - bash -lc "easy_install-2.7 pip virtualenv"
   - bash -lc "mv /mingw64/bin/python2.exe /mingw64/bin/python2-mingw64.exe"
   - bash -lc "mv /mingw64/bin/python2.7.exe /mingw64/bin/python2.7-mingw64.exe"
-  - ln -s -f -v ccache gcc  
-  - ln -s -f -v ccache g++
-  - ln -s -f -v ccache cc
-  - ln -s -f -v ccache c++
-  - ln -s -f -v ccache x86_64-w64-mingw32-gcc
-  - ln -s -f -v ccache x86_64-w64-mingw32-g++
-  - ln -s -f -v ccache x86_64-w64-mingw32-c++
+  - ln -s -f -v /mingw64/bin/ccache gcc  
+  - ln -s -f -v /mingw64/bin/ccache g++
+  - ln -s -f -v /mingw64/bin/ccache cc
+  - ln -s -f -v /mingw64/bin/ccache c++
+  - ln -s -f -v /mingw64/bin/ccache x86_64-w64-mingw32-gcc
+  - ln -s -f -v /mingw64/bin/ccache x86_64-w64-mingw32-g++
+  - ln -s -f -v /mingw64/bin/ccache x86_64-w64-mingw32-c++
 
 # Uncomment these lines to expose RDP access information to the build machine in the build log.
 #init:
