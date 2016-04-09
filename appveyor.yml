@@ -18,12 +18,14 @@ cache:
   - .servo
   - .cargo
 
-install:
-    # Check if commit in auto branch exists in master, if exists build will be canceled.
-  - cmd: >-
-      for /f %%i in ('git branch -r origin/master --contain %APPVEYOR_REPO_COMMIT%') do set git_status=%%i
+init:
+  # Check if commit in auto or try branch exists in master, if exists build will be canceled.
+  - ps: >-
+      $git_status=Invoke-RestMethod -Uri https://api.github.com/repos/$env:APPVEYOR_REPO_NAME/compare/master...$env:APPVEYOR_REPO_COMMIT
 
-      IF %APPVEYOR_REPO_BRANCH%==auto (IF [%git_status%]==[origin/master] EXIT -1)
+      if ($env:APPVEYOR_REPO_BRANCH -ne "master" -and ($git_status.status -eq "behind" -or $git_status.status -eq "identical")) {exit 0}
+
+install:
   - bash -lc "echo $MSYSTEM; pacman --needed --noconfirm -Sy pacman-mirrors"
   - bash -lc "pacman --noconfirm -Sy"
   - bash -lc "pacman -Sy --needed --noconfirm git mingw-w64-x86_64-toolchain mingw-w64-x86_64-freetype mingw-w64-x86_64-icu mingw-w64-x86_64-nspr mingw-w64-x86_64-ca-certificates mingw-w64-x86_64-expat mingw-w64-x86_64-cmake tar diffutils patch patchutils make python2-setuptools"
